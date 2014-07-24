@@ -33,5 +33,9 @@ See full instructions at http://mintplugins.com/doc/mp-stacks
 
 == Changelog ==
 
+= 1.0.0.1 = June 7, 2014
+* Fixed utility code page for mp-stacks-developer from “Image Slider” to just “Slider”
+* Better CSS positioning for navigation dots
+
 = 1.0.0.0 = June 7, 2014
 * Original release
