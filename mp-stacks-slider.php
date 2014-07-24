@@ -3,7 +3,7 @@
 Plugin Name: MP Stacks + Slider
 Plugin URI: http://mintplugins.com/plugins/mp-stacks-slider
 Description: Show an image/video slider on any page, at any time, anywhere on your website. Just put make a brick using “MP Stacks”, put the stack on a page, and set the brick’s Content-Type to be “Slider”.
-Version: 1.0.0.0
+Version: 1.0.0.1
 Author: Mint Plugins
 Author URI: http://mintplugins.com
 Text Domain: mp_stacks_slider

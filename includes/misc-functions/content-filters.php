@@ -29,10 +29,54 @@ function mp_stacks_brick_content_output_css_slider( $css_output, $post_id, $firs
 	$mp_stacks_nav_color = get_post_meta( $post_id, 'mp_stacks_nav_color', true );
 	$mp_stacks_nav_color = empty( $mp_stacks_nav_color ) ? '#fff' : $mp_stacks_nav_color;
 	
-	//Css for the slider. We hide the container before it's loaded and show it upon load using JS
+	//Show Navigation Dots?
+	$mp_stacks_show_nav = get_post_meta( $post_id, 'mp_stacks_show_nav', true );
+	
+	if ( empty( $mp_stacks_show_nav ) || $mp_stacks_show_nav  == 'bottom_center_inside' ){
+		$mp_stacks_show_nav = 'bottom:1px; text-align: center;';
+	}
+	elseif ( $mp_stacks_show_nav == 'bottom_center_outside' ){
+		$mp_stacks_show_nav = 'bottom:-35px; text-align: center;';
+	}
+	else if ( $mp_stacks_show_nav == 'bottom_left_inside' ){
+		$mp_stacks_show_nav = 'bottom:1px; text-align: left;';
+	}
+	else if ( $mp_stacks_show_nav == 'bottom_left_outside' ){
+		$mp_stacks_show_nav = 'bottom:-35px; text-align: left;';
+	}
+	else if ( $mp_stacks_show_nav == 'bottom_right_inside' ){
+		$mp_stacks_show_nav = 'bottom:1px; text-align: right;';
+	}
+	else if ( $mp_stacks_show_nav == 'bottom_right_outside' ){
+		$mp_stacks_show_nav = 'bottom:-35px; text-align: right;';
+	}
+	if ( $mp_stacks_show_nav  == 'top_center_inside' ){
+		$mp_stacks_show_nav = 'top:15px; text-align: center;';
+	}
+	elseif ( $mp_stacks_show_nav == 'top_center_outside' ){
+		$mp_stacks_show_nav = 'top:-35px; text-align: center;';
+	}
+	else if ( $mp_stacks_show_nav == 'top_left_inside' ){
+		$mp_stacks_show_nav = 'top:15px; text-align: left;';
+	}
+	else if ( $mp_stacks_show_nav == 'top_left_outside' ){
+		$mp_stacks_show_nav = 'top:-35px; text-align: left;';
+	}
+	else if ( $mp_stacks_show_nav == 'top_right_inside' ){
+		$mp_stacks_show_nav = 'top:15px; text-align: right;';
+	}
+	else if ( $mp_stacks_show_nav == 'top_right_outside' ){
+		$mp_stacks_show_nav = 'top:-35px; text-align: right;';
+	}
+	
+	//CSS for the slider. We hide the container before it's loaded and show it upon load using JS
 	$css_slider_output = 
 	'#mp-stacks-slider-container-' . $post_id . '{
 		display:none;
+	}
+	#mp-stacks-slider-' . $post_id . ' {
+		position:relative;
+		overflow:visible!important;
 	}
 	#mp-stacks-slider-' . $post_id . ' .mp-stacks-item img{
 		display: block;
@@ -41,8 +85,10 @@ function mp_stacks_brick_content_output_css_slider( $css_output, $post_id, $firs
 		margin:0px;
 	}
 	#mp-stacks-slider-' . $post_id . ' .flex-control-nav{
-		opacity:1;
+		opacity:0;/*We\'ll turn this back on when it\'s loaded using JS */
 		z-index:999;	
+		' . $mp_stacks_show_nav . '
+		transition: all 0.2s ease-in-out;
 	}
 	#mp-stacks-slider-' . $post_id . ' .flex-active,
 	#mp-stacks-slider-' . $post_id . ' a{
@@ -53,6 +99,9 @@ function mp_stacks_brick_content_output_css_slider( $css_output, $post_id, $firs
 	}
 	#mp-stacks-slider-' . $post_id . ' .flex-active{
 		opacity:.9;
+	}
+	#mp-stacks-image-slides-' . $post_id . '{
+		margin-bottom:-13px;	
 	}';
 	
 	return $css_slider_output . $css_output;
@@ -93,7 +142,7 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
 	
 	//Show Navigation Dots?
 	$mp_stacks_show_nav = get_post_meta( $brick_id, 'mp_stacks_show_nav', true );
-	$mp_stacks_show_nav = empty( $mp_stacks_show_nav ) ? true : $mp_stacks_show_nav;
+	$mp_stacks_show_nav = $mp_stacks_show_nav == 'false' ? false : true;
 	
 	$js_output = '
 	<script type="text/javascript">
@@ -102,7 +151,7 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
 	jQuery(document).ready(function($) {
 		
 		$("#mp-stacks-slider-container-' . $brick_id . '").css( "display", "block" );
-    	
+	    	
 		$("#mp-stacks-slider-' . $brick_id . '").flexslider({
 		
 			animation: "' . $mp_stacks_animation_style . '",              //String: Select your animation type, "fade" or "slide"
@@ -136,6 +185,10 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
 			pausePlay: false,               //Boolean: Create pause/play dynamic element
 			pauseText: "Pause",             //String: Set the text for the "pause" pausePlay item
 			playText: "Play",               //String: Set the text for the "play" pausePlay item
+			
+			start: function(){ //Callback: function(slider) - Fires when the slider loads the first slide
+				$("#mp-stacks-slider-' . $brick_id . ' .flex-control-nav").css( "opacity", "1" );			
+			},
 		
 		});
 		
@@ -163,9 +216,9 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
 	
 	ob_start(); ?>
 	
-    <div id="mp-stacks-slider-container-<?php echo $brick_id; ?>">
+    <div id="mp-stacks-slider-container-<?php echo $brick_id; ?>" class="mp-stacks-slider-container">
     
-        <div id="mp-stacks-slider-<?php echo $brick_id; ?>">
+        <div id="mp-stacks-slider-<?php echo $brick_id; ?>" class="mp-stacks-slider">
         
             <ul id="mp-stacks-image-slides-<?php echo $brick_id; ?>" class="slides">
                 

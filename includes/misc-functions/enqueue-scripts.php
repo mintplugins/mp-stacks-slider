@@ -27,11 +27,11 @@
  */
 function mp_stacks_slider_enqueue_scripts(){
 			
-	//Enqueue Owl Slider css
+	//Enqueue Flex Slider css
 	wp_enqueue_style( 'flexslider_css', plugins_url( 'css/flexslider.css', dirname( __FILE__ ) ) );
 	
 	//Enqueue Flex Slider Js
-	wp_enqueue_script( 'flexslider_js', plugins_url( 'js/jquery.flexslider-min.js', dirname( __FILE__ ) ), array( 'jquery' ), true, false );
+	wp_enqueue_script( 'flexslider_js', plugins_url( 'js/jquery.flexslider.js', dirname( __FILE__ ) ), array( 'jquery' ), true, false );
 
 }
 add_action( 'wp_enqueue_scripts', 'mp_stacks_slider_enqueue_scripts' );

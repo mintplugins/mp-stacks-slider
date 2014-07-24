@@ -25,9 +25,11 @@ function mp_stacks_slider_create_meta_box(){
 	
 	//Get current page
 	$current_page = get_current_screen();
-	
-	//Only load if we are on an mp_brick page
-	if ( $current_page->id != 'mp_brick' ){
+		
+	//Only load if we are on an mp_brick page or the stack template creation page
+	if ( $current_page->id == 'mp_brick' || $current_page->id == 'settings_page_mp_stacks_create_template_page' ){
+		//Keep er goin!
+	}else{
 		return;	
 	}
 	
@@ -57,11 +59,31 @@ function mp_stacks_slider_create_meta_box(){
 		),
 		array(
 			'field_id'			=> 'mp_stacks_show_nav',
-			'field_title' 	=> __( 'Show Navigation Dots?', 'mp_stacks_slider'),
-			'field_description' 	=> __( 'Should we show the navigation dots at the bottom of the slider? Default: Show', 'mp_stacks_slider' ),
+			'field_title' 	=> __( 'Navigation Dots\' Position', 'mp_stacks_slider'),
+			'field_description' 	=> __( 'Where should we position the navigation dots? Default: Bottom, Center, Inside', 'mp_stacks_slider' ),
 			'field_type' 	=> 'select',
 			'field_value' => '',
-			'field_select_values' 	=> array( 'true' => __("Show", 'mp_stacks_slider'), 'false' => __("Hide", 'mp_stacks_slider')),
+			'field_select_values' 	=> array( 
+				'bottom_center_inside' => __("Bottom, Center, Inside", 'mp_stacks_slider'), 
+				'bottom_center_outside' => __("Bottom, Center, Outside", 'mp_stacks_slider'), 
+				
+				'bottom_left_inside' => __("Bottom, Left, Inside", 'mp_stacks_slider'), 
+				'bottom_left_outside' => __("Bottom, Left, Outside", 'mp_stacks_slider'), 
+				
+				'bottom_right_inside' => __("Bottom, Right, Inside", 'mp_stacks_slider'), 
+				'bottom_right_outside' => __("Bottom, Right, Outside", 'mp_stacks_slider'), 
+				
+				'top_center_inside' => __("Top, Center, Inside", 'mp_stacks_slider'), 
+				'top_center_outside' => __("Top, Center, Outside", 'mp_stacks_slider'), 
+				
+				'top_left_inside' => __("Top, Left, Inside", 'mp_stacks_slider'), 
+				'top_left_outside' => __("Top, Left, Outside", 'mp_stacks_slider'), 
+				
+				'top_right_inside' => __("Top, Right, Inside", 'mp_stacks_slider'), 
+				'top_right_outside' => __("Top, Right, Outside", 'mp_stacks_slider'), 				
+				
+				'false' => __("Don't Show Dots", 'mp_stacks_slider')),
+				
 			'field_showhider' => 'mp_stacks_navigation_settings',
 		),
 		array(
@@ -134,6 +156,14 @@ function mp_stacks_slider_create_meta_box(){
 			'field_description' 	=> __( 'Select the images you\'d like to use for this slider below. Re-order by dragging and dropping.', 'mp_stacks_slider' ),
 			'field_type' 	=> 'basictext',
 			'field_value' => '',
+		),
+		array(
+			'field_id'	 => 'mp_stacks_slider_image_title',
+			'field_title' => __( 'Slide', 'mp_stacks'),
+			'field_description' => __( '', 'mp_stacks' ),
+			'field_type' => 'repeatertitle',
+			'field_value' => '',
+			'field_repeater' => 'mp_stacks_slider_images'
 		),
 		array(
 			'field_id'			=> 'mp_stacks_slider_image_url',
