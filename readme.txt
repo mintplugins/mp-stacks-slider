@@ -4,7 +4,7 @@ Donate link: http://mintplugins.com/
 Tags: message bar, header
 Requires at least: 3.5
 Tested up to: 3.8.1
-Stable tag: 1.0.0.1
+Stable tag: 1.0.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,7 +33,10 @@ See full instructions at http://mintplugins.com/doc/mp-stacks
 
 == Changelog ==
 
-= 1.0.0.1 = June 7, 2014
+= 1.0.0.2 = September 18, 2014
+* Changed update files to work properly with licensing
+
+= 1.0.0.1 = July 24, 2014
 * Fixed utility code page for mp-stacks-developer from “Image Slider” to just “Slider”
 * Better CSS positioning for navigation dots
 

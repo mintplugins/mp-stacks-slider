@@ -25,7 +25,7 @@
 			'software_name' => 'MP Stacks Slider', //<- The exact name of this Plugin.
 			'software_api_url' => 'http://mintplugins.com',//The URL where Image Slider and mp_repo are installed and checked
 			'software_filename' => 'mp-stacks-slider.php',
-			'software_licensed' => false, //<-Boolean
+			'software_licensed' => true, //<-Boolean
 		);
 		
 		//Since this is a plugin, call the Plugin Updater class
