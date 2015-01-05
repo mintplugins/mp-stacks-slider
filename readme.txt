@@ -3,8 +3,8 @@ Contributors: johnstonphilip
 Donate link: http://mintplugins.com/
 Tags: message bar, header
 Requires at least: 3.5
-Tested up to: 3.8.1
-Stable tag: 1.0.0.2
+Tested up to: 4.1
+Stable tag: 1.0.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,11 @@ See full instructions at http://mintplugins.com/doc/mp-stacks
 
 
 == Changelog ==
+
+= 1.0.0.3 = January 5, 2015
+* Fixed bug with accidental dependancy on MP Stacks + Gallery.
+* Better reset values for meta options.
+* Better Image Cropping.
 
 = 1.0.0.2 = September 18, 2014
 * Changed update files to work properly with licensing

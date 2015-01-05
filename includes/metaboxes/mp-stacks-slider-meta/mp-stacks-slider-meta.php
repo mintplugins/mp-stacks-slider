@@ -23,16 +23,6 @@
  */
 function mp_stacks_slider_create_meta_box(){
 	
-	//Get current page
-	$current_page = get_current_screen();
-		
-	//Only load if we are on an mp_brick page or the stack template creation page
-	if ( $current_page->id == 'mp_brick' || $current_page->id == 'settings_page_mp_stacks_create_template_page' ){
-		//Keep er goin!
-	}else{
-		return;	
-	}
-	
 	/**
 	 * Array which stores all info about the new metabox
 	 *
@@ -62,7 +52,7 @@ function mp_stacks_slider_create_meta_box(){
 			'field_title' 	=> __( 'Navigation Dots\' Position', 'mp_stacks_slider'),
 			'field_description' 	=> __( 'Where should we position the navigation dots? Default: Bottom, Center, Inside', 'mp_stacks_slider' ),
 			'field_type' 	=> 'select',
-			'field_value' => '',
+			'field_value' => 'bottom_center_inside',
 			'field_select_values' 	=> array( 
 				'bottom_center_inside' => __("Bottom, Center, Inside", 'mp_stacks_slider'), 
 				'bottom_center_outside' => __("Bottom, Center, Outside", 'mp_stacks_slider'), 
@@ -91,7 +81,7 @@ function mp_stacks_slider_create_meta_box(){
 			'field_title' 	=> __( 'Navigation Dot Colors:', 'mp_stacks_slider'),
 			'field_description' 	=> __( 'What color should the navigation dots be? Default: White', 'mp_stacks_slider' ),
 			'field_type' 	=> 'colorpicker',
-			'field_value' => '',
+			'field_value' => '#FFF',
 			'field_showhider' => 'mp_stacks_navigation_settings',
 		),
 		array(
@@ -107,7 +97,7 @@ function mp_stacks_slider_create_meta_box(){
 			'field_description' 	=> __( 'Should the images auto-slide? Default: On', 'mp_stacks_slider' ),
 			'field_type' 	=> 'select',
 			'field_select_values' 	=> array( 'true' => __("On", 'mp_stacks_slider'), 'false' => __("Off", 'mp_stacks_slider')),
-			'field_value' => '',
+			'field_value' => 'true',
 			'field_showhider' => 'mp_stacks_slideshow_settings',
 		),
 		array(
@@ -116,7 +106,7 @@ function mp_stacks_slider_create_meta_box(){
 			'field_description' 	=> __( 'What style shoud the slide animation be? Default: Fade', 'mp_stacks_slider' ),
 			'field_type' 	=> 'select',
 			'field_select_values' 	=> array( 'fade' => __("Fade", 'mp_stacks_slider'), 'slide' => __("Slide", 'mp_stacks_slider')),
-			'field_value' => '',
+			'field_value' => 'fade',
 			'field_showhider' => 'mp_stacks_slideshow_settings',
 		),
 		array(
@@ -124,7 +114,7 @@ function mp_stacks_slider_create_meta_box(){
 			'field_title' 	=> __( 'Slide Speed:', 'mp_stacks_slider'),
 			'field_description' 	=> __( 'How many seconds should each slide show for? Default: 4', 'mp_stacks_slider' ),
 			'field_type' 	=> 'number',
-			'field_value' => '',
+			'field_value' => '4',
 			'field_showhider' => 'mp_stacks_slideshow_settings',
 		),
 		array(
@@ -137,17 +127,17 @@ function mp_stacks_slider_create_meta_box(){
 		array(
 			'field_id'			=> 'mp_stacks_slider_width',
 			'field_title' 	=> __( 'Slider Image Width :', 'mp_stacks_slider'),
-			'field_description' 	=> __( 'How many pixels wide should the slider images be? Default: 400', 'mp_stacks_slider' ),
+			'field_description' 	=> __( 'How many pixels wide should the slider images be? Default: 1000', 'mp_stacks_slider' ),
 			'field_type' 	=> 'number',
-			'field_value' => '',
+			'field_value' => '1000',
 			'field_showhider' => 'mp_stacks_slider_sizes',
 		),
 		array(
 			'field_id'			=> 'mp_stacks_slider_height',
 			'field_title' 	=> __( 'Slider Image Height :', 'mp_stacks_slider'),
-			'field_description' 	=> __( 'How many pixels wide should the slider images be? Default: 225', 'mp_stacks_slider' ),
+			'field_description' 	=> __( 'How many pixels wide should the slider images be? Default: 0. Set this to 0 to scale the image without cropping it.', 'mp_stacks_slider' ),
 			'field_type' 	=> 'number',
-			'field_value' => '',
+			'field_value' => '0',
 			'field_showhider' => 'mp_stacks_slider_sizes',
 		),
 		array(
@@ -204,4 +194,4 @@ function mp_stacks_slider_create_meta_box(){
 	global $mp_stacks_slider_meta_box;
 	$mp_stacks_slider_meta_box = new MP_CORE_Metabox($mp_stacks_slider_add_meta_box, $mp_stacks_slider_items_array);
 }
-add_action('current_screen', 'mp_stacks_slider_create_meta_box');
+add_action('mp_brick_metabox', 'mp_stacks_slider_create_meta_box');

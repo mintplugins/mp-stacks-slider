@@ -3,7 +3,7 @@
 Plugin Name: MP Stacks + Slider
 Plugin URI: http://mintplugins.com/plugins/mp-stacks-slider
 Description: Show an image/video slider on any page, at any time, anywhere on your website. Just put make a brick using “MP Stacks”, put the stack on a page, and set the brick’s Content-Type to be “Slider”.
-Version: 1.0.0.2
+Version: 1.0.0.3
 Author: Mint Plugins
 Author URI: http://mintplugins.com
 Text Domain: mp_stacks_slider
@@ -34,7 +34,7 @@ License: GPL2
 */
 // Plugin version
 if( !defined( 'MP_STACKS_SLIDER_VERSION' ) )
-	define( 'MP_STACKS_SLIDER_VERSION', '1.0.0.1' );
+	define( 'MP_STACKS_SLIDER_VERSION', '1.0.0.3' );
 
 // Plugin Folder URL
 if( !defined( 'MP_STACKS_SLIDER_PLUGIN_URL' ) )
@@ -149,10 +149,14 @@ function mp_stacks_slider_include_files(){
 		require( MP_STACKS_SLIDER_PLUGIN_DIR . 'includes/metaboxes/mp-stacks-slider-meta/mp-stacks-slider-meta.php' );
 		
 		/**
-		 * Functions which assist with the creation of templates using this add-on
+		 * Add this add on to the list of Active MP Stacks Add Ons
 		 */
 		if ( function_exists('mp_stacks_developer_textdomain') ){
-			require( MP_STACKS_SLIDER_PLUGIN_DIR . 'includes/misc-functions/stack-template-functions.php' );
+			function mp_stacks_slider_add_active( $required_add_ons ){
+				$required_add_ons['mp_stacks_slider'] = 'MP Stacks + Slider';
+				return $required_add_ons;
+			}
+			add_filter( 'mp_stacks_active_add_ons', 'mp_stacks_slider_add_active' );
 		}
 		
 		/**

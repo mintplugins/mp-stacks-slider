@@ -195,20 +195,16 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
     });
 	
 	</script>';
-	
-	//Add the JS to the global variable which will handle all mp_stacks_galleries on this page
-	$mp_stacks_gallery_js_output[$brick_id] = $js_output;
-	
+		
 	//Get the array of images
 	$slider_images = get_post_meta( $brick_id, 'mp_stacks_slider_images', true );
 	
 	//Get the width the images should be 
 	$mp_stacks_slider_width = get_post_meta( $brick_id, 'mp_stacks_slider_width', true );
-	$mp_stacks_slider_width = empty( $mp_stacks_slider_width ) ? 400 : $mp_stacks_slider_width;
+	$mp_stacks_slider_width = empty( $mp_stacks_slider_width ) ? 1000 : $mp_stacks_slider_width;
 	
 	//Get the height the images should be 
 	$mp_stacks_slider_height = get_post_meta( $brick_id, 'mp_stacks_slider_height', true );
-	$mp_stacks_slider_height = empty( $mp_stacks_slider_height ) ? 225 : $mp_stacks_slider_height;
 	
 	//Get the speed the slideshow should be
 	$mp_stacks_slideshow_speed = get_post_meta( $brick_id, 'mp_stacks_slideshow_speed', true );
@@ -217,7 +213,9 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
 	ob_start(); ?>
 	
     <div id="mp-stacks-slider-container-<?php echo $brick_id; ?>" class="mp-stacks-slider-container">
-    
+    	
+        <?php echo $js_output; ?>
+        
         <div id="mp-stacks-slider-<?php echo $brick_id; ?>" class="mp-stacks-slider">
         
             <ul id="mp-stacks-image-slides-<?php echo $brick_id; ?>" class="slides">
@@ -227,9 +225,14 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
                     ?><li class="mp-stacks-item">
                     	<?php 
 						//If there is an image
-						if ( !empty( $slider_image['mp_stacks_slider_image_url'] ) ){ ?>
-                    		<img src="<?php echo mp_aq_resize( $slider_image['mp_stacks_slider_image_url'], $mp_stacks_slider_width, $mp_stacks_slider_height, true ); ?>" />
-                        <?php }
+						if ( !empty( $slider_image['mp_stacks_slider_image_url'] ) ){ 
+                        	if ( !empty( $mp_stacks_slider_height ) && $mp_stacks_slider_height > 0 ){ ?>
+                    			<img src="<?php echo mp_aq_resize( $slider_image['mp_stacks_slider_image_url'], $mp_stacks_slider_width, $mp_stacks_slider_height, true ); ?>" />
+                            <?php }
+							else{?>
+								<img src="<?php echo mp_aq_resize( $slider_image['mp_stacks_slider_image_url'], $mp_stacks_slider_width, NULL, false ); ?>" />
+							<?php }
+                        }
 						//If there is a video
 						else if ( !empty( $slider_image['mp_stacks_slider_video_url'] ) ){ 
 							
