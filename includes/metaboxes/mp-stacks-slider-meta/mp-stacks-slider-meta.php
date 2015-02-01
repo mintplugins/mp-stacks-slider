@@ -135,7 +135,7 @@ function mp_stacks_slider_create_meta_box(){
 		array(
 			'field_id'			=> 'mp_stacks_slider_height',
 			'field_title' 	=> __( 'Slider Image Height :', 'mp_stacks_slider'),
-			'field_description' 	=> __( 'How many pixels wide should the slider images be? Default: 0. Set this to 0 to scale the image without cropping it.', 'mp_stacks_slider' ),
+			'field_description' 	=> __( 'How many pixels high should the slider images be? Default: 0. Set this to 0 to scale the image without cropping it.', 'mp_stacks_slider' ),
 			'field_type' 	=> 'number',
 			'field_value' => '0',
 			'field_showhider' => 'mp_stacks_slider_sizes',
