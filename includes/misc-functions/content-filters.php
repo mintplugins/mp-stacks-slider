@@ -73,6 +73,7 @@ function mp_stacks_brick_content_output_css_slider( $css_output, $post_id, $firs
 	$css_slider_output = 
 	'#mp-stacks-slider-container-' . $post_id . '{
 		display:none;
+		vertical-align:bottom;
 	}
 	#mp-stacks-slider-' . $post_id . ' {
 		position:relative;
@@ -102,6 +103,13 @@ function mp_stacks_brick_content_output_css_slider( $css_output, $post_id, $firs
 	}
 	#mp-stacks-image-slides-' . $post_id . '{
 		margin-bottom:-13px;	
+	}
+	#mp-stacks-image-slides-' . $post_id . ',
+	#mp-stacks-image-slides-' . $post_id . ' li{
+		margin-top:0px;
+		margin-right:0px;
+		margin-bottom:0px;
+		margin-left:0px;
 	}';
 	
 	return $css_slider_output . $css_output;
@@ -141,8 +149,8 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
 	$mp_stacks_animation_style = empty( $mp_stacks_animation_style ) ? 'fade' : $mp_stacks_animation_style;
 	
 	//Show Navigation Dots?
-	$mp_stacks_show_nav = get_post_meta( $brick_id, 'mp_stacks_show_nav', true );
-	$mp_stacks_show_nav = $mp_stacks_show_nav == 'false' ? false : true;
+	$mp_stacks_show_nav = mp_core_get_post_meta( $brick_id, 'mp_stacks_show_nav', 'true' );
+	$mp_stacks_show_nav = $mp_stacks_show_nav == 'false' ? 'false' : 'true';
 	
 	$js_output = '
 	<script type="text/javascript">
@@ -150,7 +158,7 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
 	//Set up the slider on page load
 	jQuery(document).ready(function($) {
 		
-		$("#mp-stacks-slider-container-' . $brick_id . '").css( "display", "block" );
+		$("#mp-stacks-slider-container-' . $brick_id . '").css( "display", "inline-block" );
 	    	
 		$("#mp-stacks-slider-' . $brick_id . '").flexslider({
 		
