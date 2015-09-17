@@ -25,6 +25,9 @@ function mp_stacks_brick_content_output_css_slider( $css_output, $post_id, $firs
 		return $css_output;	
 	}
 	
+	//Enqueue Flex Slider css
+	wp_enqueue_style( 'flexslider_css', plugins_url( 'css/flexslider.css', dirname( __FILE__ ) ), array(), MP_STACKS_SLIDER_VERSION );
+	
 	//Should this slideshow be on by default?
 	$mp_stacks_nav_color = get_post_meta( $post_id, 'mp_stacks_nav_color', true );
 	$mp_stacks_nav_color = empty( $mp_stacks_nav_color ) ? '#fff' : $mp_stacks_nav_color;
@@ -136,7 +139,8 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
 		return $default_content_output; 	
 	}
 	
-	global $mp_stacks_gallery_js_output;
+	//Enqueue Flex Slider Js
+	wp_enqueue_script( 'flexslider_js', plugins_url( 'js/jquery.flexslider.js', dirname( __FILE__ ) ), array( 'jquery' ), MP_STACKS_SLIDER_VERSION, true );
 	
 	//Set default value for $content_output to NULL
 	$content_output = NULL;	
@@ -156,18 +160,19 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
 	//Show Navigation Dots?
 	$mp_stacks_show_nav = mp_core_get_post_meta( $brick_id, 'mp_stacks_show_nav', 'true' );
 	$mp_stacks_show_nav = $mp_stacks_show_nav == 'false' ? 'false' : 'true';
-	
+		
 	$js_output = '
-	<script type="text/javascript">
+		
+	var mp_stacks_slider_' . $brick_id . ';
 	
 	//Set up the slider on page load
 	jQuery(document).ready(function($) {
 		
-		$( window ).load(function(){
+		//$( window ).load(function(){
 		
 			$("#mp-stacks-slider-container-' . $brick_id . '").css( "display", "inline-block" );
 				
-			$("#mp-stacks-slider-' . $brick_id . '").flexslider({
+			mp_stacks_slider_' . $brick_id . ' = $("#mp-stacks-slider-' . $brick_id . '").flexslider({
 			
 				animation: "' . $mp_stacks_animation_style . '",              //String: Select your animation type, "fade" or "slide"
 				easing: "swing",               //{NEW} String: Determines the easing method used in jQuery transitions. jQuery easing plugin is supported!
