@@ -207,16 +207,22 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
 				playText: "Play",               //String: Set the text for the "play" pausePlay item
 				
 				start: function(){ //Callback: function(slider) - Fires when the slider loads the first slide
-					$("#mp-stacks-slider-' . $brick_id . ' .flex-control-nav").css( "opacity", "1" );			
+					$("#mp-stacks-slider-' . $brick_id . ' .flex-control-nav").css( "opacity", "1" );					
 				},
 			
 			});
 		
-		});
+		//});
 		
-    });
-	
-	</script>';
+		//Turn slideshow off if the user clicks anywhere on the slider
+		$( document ).on( \'mouseenter click\', \'#mp-stacks-slider-' . $brick_id . ' .mp-slider-video-overlay\', function(){
+			//Remove the video overlay which triggers this event
+			$(this).remove();
+			//Pause the slideshow so the video can be watched in peace.
+			$( document ).find( "#mp-stacks-slider-' . $brick_id . '" ).flexslider("pause");
+		});
+					
+    });';
 		
 	//Get the array of images
 	$slider_images = get_post_meta( $brick_id, 'mp_stacks_slider_images', true );
@@ -235,9 +241,7 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
 	ob_start(); ?>
 	
     <div id="mp-stacks-slider-container-<?php echo $brick_id; ?>" class="mp-stacks-slider-container" style="display:none;">
-    	
-        <?php echo $js_output; ?>
-        
+    	        
         <div id="mp-stacks-slider-<?php echo $brick_id; ?>" class="mp-stacks-slider">
         
             <ul id="mp-stacks-image-slides-<?php echo $brick_id; ?>" class="slides">
@@ -264,7 +268,17 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
 								'iframe_css_id' => NULL,
 								'iframe_css_class' => NULL,
 							);
-			
+							
+							//If we are not on an iphone (where videos play fullscreen)
+							if ( !mp_core_is_iphone() & !mp_core_is_ipad() ){
+								
+								//Output a transparent 16x9 image overtop of the video that we can trigger the mouse over which pauses the slideshow.
+								echo '<div class="mp-slider-video-overlay" style="width:100%; position:absolute; top:0; left: 0; z-index:99999;">';
+									echo '<img class="mp-slider-overlay-img" style="position:relative; display:block; visibility:hidden; padding:0px; margin:0px; width:100%; border:none;'; 
+									echo '" width="100%" src="' . MP_CORE_PLUGIN_URL . '/includes/images/16x9.gif" />
+								</div>';
+							}
+							
 							echo mp_core_oembed_get( $slider_image['mp_stacks_slider_video_url'], $args );
 						} ?>
                       </li>
