@@ -4,7 +4,7 @@ Donate link: http://mintplugins.com/
 Tags: message bar, header
 Requires at least: 3.5
 Tested up to: 4.1
-Stable tag: 1.0.0.6
+Stable tag: 1.0.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,13 @@ See full instructions at http://mintplugins.com/doc/mp-stacks
 
 
 == Changelog ==
+
+= 1.0.0.7 = September 17, 2015
+* Removed "inline-block" from flex-control-nav li 
+* Brick Metabox controls now load using ajax.
+* Admin Metabox Scripts now enqueued only when needed.
+* CSS Change: "width:100%" added for #mp-stacks-slider-container-' . $post_id . ' and #mp-stacks-image-slides-' . $post_id . ' .mp-core-oembed-full-width-img
+* Front End Scripts now enqueued only when needed.
 
 = 1.0.0.6 = March 18, 2015
 * Enable slideshow upon window.load - this way the page is loaded properly before the slider is made visible.
