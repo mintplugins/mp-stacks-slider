@@ -74,6 +74,7 @@ function mp_stacks_brick_content_output_css_slider( $css_output, $post_id, $firs
 	'#mp-stacks-slider-container-' . $post_id . '{
 		display:none;
 		vertical-align:bottom;
+		width:100%;	
 	}
 	#mp-stacks-slider-' . $post_id . ' {
 		position:relative;
@@ -110,6 +111,10 @@ function mp_stacks_brick_content_output_css_slider( $css_output, $post_id, $firs
 		margin-right:0px;
 		margin-bottom:0px;
 		margin-left:0px;
+		width:100%;	
+	}
+	#mp-stacks-image-slides-' . $post_id . ' .mp-core-oembed-full-width-img{
+		visibility: hidden;
 	}';
 	
 	return $css_slider_output . $css_output;
