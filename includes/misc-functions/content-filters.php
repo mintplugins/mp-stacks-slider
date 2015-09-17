@@ -280,31 +280,12 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
     
     <?php
 	
+	//Pull in the existing MP Stacks inline js string which is output the Footer.
+	global $mp_stacks_footer_inline_js;
+	$mp_stacks_footer_inline_js[ 'mp-stacks-slider-' . $brick_id ] = $js_output;
+	
 	//Return
 	return ob_get_clean();
 	
 }
 add_filter('mp_stacks_brick_content_output', 'mp_stacks_brick_content_output_slider', 10, 3);
-
-/**
- * This will output the js we need for the owl slider after the owl slider script has been enqueued.
- *
- * @access   public
- * @since    1.0.0
- * @return   void
- */
-function mp_stacks_slider_output_js(){
-	
-	global $mp_stacks_slider_js_output;
-	
-	if ( empty( $mp_stacks_slider_js_output ) ){
-		return;	
-	}
-	
-	if ( wp_script_is( 'flexslider_js', 'done' ) ) {
-		foreach( $mp_stacks_slider_js_output as $slider_js ){
-			echo $slider_js;
-		}
-	}
-}
-add_action( 'wp_footer', 'mp_stacks_slider_output_js', 100);
