@@ -4,7 +4,7 @@ Donate link: http://mintplugins.com/
 Tags: message bar, header
 Requires at least: 3.5
 Tested up to: 4.1
-Stable tag: 1.0.0.7
+Stable tag: 1.0.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,9 @@ See full instructions at http://mintplugins.com/doc/mp-stacks
 
 
 == Changelog ==
+
+= 1.0.0.8 = November 11, 2015
+* Added the ability for each slide to have its own link complete with Open Types including Lightboxes at custom sizes.
 
 = 1.0.0.7 = September 17, 2015
 * Removed "inline-block" from flex-control-nav li 
