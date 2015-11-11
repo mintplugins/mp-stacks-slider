@@ -41,14 +41,14 @@ function mp_stacks_slider_create_meta_box(){
 	 *
 	 */
 	$mp_stacks_slider_items_array = array(
-		array(
+		'mp_stacks_navigation_settings' => array(
 			'field_id'			=> 'mp_stacks_navigation_settings',
 			'field_title' 	=> __( 'Slider Navigation Settings:', 'mp_stacks_slider'),
 			'field_description' 	=> __( '', 'mp_stacks_slider' ),
 			'field_type' 	=> 'showhider',
 			'field_value' => '',
 		),
-		array(
+		'mp_stacks_show_nav' => array(
 			'field_id'			=> 'mp_stacks_show_nav',
 			'field_title' 	=> __( 'Navigation Dots\' Position', 'mp_stacks_slider'),
 			'field_description' 	=> __( 'Where should we position the navigation dots? Default: Bottom, Center, Inside', 'mp_stacks_slider' ),
@@ -77,7 +77,7 @@ function mp_stacks_slider_create_meta_box(){
 				
 			'field_showhider' => 'mp_stacks_navigation_settings',
 		),
-		array(
+		'mp_stacks_nav_color' => array(
 			'field_id'			=> 'mp_stacks_nav_color',
 			'field_title' 	=> __( 'Navigation Dot Colors:', 'mp_stacks_slider'),
 			'field_description' 	=> __( 'What color should the navigation dots be? Default: White', 'mp_stacks_slider' ),
@@ -85,14 +85,14 @@ function mp_stacks_slider_create_meta_box(){
 			'field_value' => '#FFF',
 			'field_showhider' => 'mp_stacks_navigation_settings',
 		),
-		array(
+		'mp_stacks_slideshow_settings' => array(
 			'field_id'			=> 'mp_stacks_slideshow_settings',
 			'field_title' 	=> __( 'Slideshow Settings:', 'mp_stacks_slider'),
 			'field_description' 	=> __( '', 'mp_stacks_slider' ),
 			'field_type' 	=> 'showhider',
 			'field_value' => '',
 		),
-		array(
+		'mp_stacks_slideshow_on' => array(
 			'field_id'			=> 'mp_stacks_slideshow_on',
 			'field_title' 	=> __( 'Auto-Slide:', 'mp_stacks_slider'),
 			'field_description' 	=> __( 'Should the images auto-slide? Default: On', 'mp_stacks_slider' ),
@@ -101,7 +101,7 @@ function mp_stacks_slider_create_meta_box(){
 			'field_value' => 'true',
 			'field_showhider' => 'mp_stacks_slideshow_settings',
 		),
-		array(
+		'mp_stacks_animation_style' => array(
 			'field_id'			=> 'mp_stacks_animation_style',
 			'field_title' 	=> __( 'Animation Style:', 'mp_stacks_slider'),
 			'field_description' 	=> __( 'What style shoud the slide animation be? Default: Fade', 'mp_stacks_slider' ),
@@ -110,7 +110,7 @@ function mp_stacks_slider_create_meta_box(){
 			'field_value' => 'fade',
 			'field_showhider' => 'mp_stacks_slideshow_settings',
 		),
-		array(
+		'mp_stacks_slider_speed' => array(
 			'field_id'			=> 'mp_stacks_slider_speed',
 			'field_title' 	=> __( 'Slide Speed:', 'mp_stacks_slider'),
 			'field_description' 	=> __( 'How many seconds should each slide show for? Default: 4', 'mp_stacks_slider' ),
@@ -118,14 +118,14 @@ function mp_stacks_slider_create_meta_box(){
 			'field_value' => '4',
 			'field_showhider' => 'mp_stacks_slideshow_settings',
 		),
-		array(
+		'mp_stacks_slider_sizes' => array(
 			'field_id'			=> 'mp_stacks_slider_sizes',
 			'field_title' 	=> __( 'Slider Image Sizes :', 'mp_stacks_slider'),
 			'field_description' 	=> __( '', 'mp_stacks_slider' ),
 			'field_type' 	=> 'showhider',
 			'field_value' => '',
 		),
-		array(
+		'mp_stacks_slider_width' => array(
 			'field_id'			=> 'mp_stacks_slider_width',
 			'field_title' 	=> __( 'Slider Image Width :', 'mp_stacks_slider'),
 			'field_description' 	=> __( 'How many pixels wide should the slider images be? Default: 1000', 'mp_stacks_slider' ),
@@ -133,7 +133,7 @@ function mp_stacks_slider_create_meta_box(){
 			'field_value' => '1000',
 			'field_showhider' => 'mp_stacks_slider_sizes',
 		),
-		array(
+		'mp_stacks_slider_height' => array(
 			'field_id'			=> 'mp_stacks_slider_height',
 			'field_title' 	=> __( 'Slider Image Height :', 'mp_stacks_slider'),
 			'field_description' 	=> __( 'How many pixels high should the slider images be? Default: 0. Set this to 0 to scale the image without cropping it.', 'mp_stacks_slider' ),
@@ -141,14 +141,14 @@ function mp_stacks_slider_create_meta_box(){
 			'field_value' => '0',
 			'field_showhider' => 'mp_stacks_slider_sizes',
 		),
-		array(
+		'mp_stacks_slider_description' => array(
 			'field_id'			=> 'mp_stacks_slider_description',
 			'field_title' 	=> __( 'Slider Images:', 'mp_stacks_slider'),
 			'field_description' 	=> __( 'Select the images you\'d like to use for this slider below. Re-order by dragging and dropping.', 'mp_stacks_slider' ),
 			'field_type' 	=> 'basictext',
 			'field_value' => '',
 		),
-		array(
+		'mp_stacks_slider_image_title' => array(
 			'field_id'	 => 'mp_stacks_slider_image_title',
 			'field_title' => __( 'Slide', 'mp_stacks'),
 			'field_description' => __( '', 'mp_stacks' ),
@@ -156,7 +156,7 @@ function mp_stacks_slider_create_meta_box(){
 			'field_value' => '',
 			'field_repeater' => 'mp_stacks_slider_images'
 		),
-		array(
+		'mp_stacks_slider_image_url' => array(
 			'field_id'			=> 'mp_stacks_slider_image_url',
 			'field_title' 	=> __( 'Slide Image', 'mp_stacks_slider'),
 			'field_description' 	=> __( 'Upload the image to use for this slider image.', 'mp_stacks_slider' ),
@@ -164,7 +164,7 @@ function mp_stacks_slider_create_meta_box(){
 			'field_value' => '',
 			'field_repeater' => 'mp_stacks_slider_images',
 		),
-		array(
+		'mp_stacks_slider_video_url' => array(
 			'field_id'			=> 'mp_stacks_slider_video_url',
 			'field_title' 	=> __( 'Slide Video (Shows if "Slide Image" is blank)', 'mp_stacks_slider'),
 			'field_description' 	=> __( 'Enter the URL or embed code to the YouTube or Vimeo video.', 'mp_stacks_slider' ),
@@ -172,7 +172,43 @@ function mp_stacks_slider_create_meta_box(){
 			'field_value' => '',
 			'field_repeater' => 'mp_stacks_slider_images',
 		),
-		
+		'mp_stacks_slider_image_link_url' => array(
+			'field_id'			=> 'mp_stacks_slider_image_link_url',
+			'field_title' 	=> __( 'Slide Link URL (This only works with photos and not with videos because videos can\'t be "clicked".)', 'mp_stacks_slider'),
+			'field_description' 	=> __( 'Enter a URL you want the user to visit when a slide image is clicked.', 'mp_stacks_slider' ),
+			'field_type' 	=> 'url',
+			'field_value' => '',
+			'field_repeater' => 'mp_stacks_slider_images',
+		),
+		'mp_stacks_slider_image_url_open_type' => array( 
+			'field_id'			=> 'mp_stacks_slider_image_url_open_type',
+			'field_title' 	=> __( 'Link Open Type', 'mp_stacks'),
+			'field_description' 	=> 'Enter the URL the above image will go to when clicked. EG: http://mylink.com',
+			'field_type' 	=> 'select',
+			'field_value' => '',
+			'field_select_values' => array( 'lightbox' => __( 'Open in Lightbox', 'mp_stacks' ), 'parent' => __( 'Open in current Window/Tab', 'mp_stacks' ), 'blank' => __( 'Open in New Window/Tab', 'mp_stacks' ) ),
+			'field_repeater' => 'mp_stacks_slider_images',
+		),
+		'mp_slider_lightbox_width' => array( 
+			'field_id'			=> 'mp_slider_lightbox_width',
+			'field_title' 	=> __( 'Lightbox Width', 'mp_stacks'),
+			'field_description' 	=> 'Enter width the lightbox popup should be. Leave blank for 100% of screen. Video Tip: If you are linking to a video that is 16x9 aspect ratio, try using "640" here.',
+			'field_type' 	=> 'number',
+			'field_value' => '640',
+			'field_conditional_id' => 'mp_stacks_slider_image_url_open_type',
+			'field_conditional_values' => array( 'lightbox' ),
+			'field_repeater' => 'mp_stacks_slider_images',
+		),
+		'mp_slider_lightbox_height' => array( 
+			'field_id'			=> 'mp_slider_lightbox_height',
+			'field_title' 	=> __( 'Lightbox Height', 'mp_stacks'),
+			'field_description' 	=> 'Enter height the lightbox popup should be. Leave blank for 100% of screen. Video Tip: If you are linking to a video that is 16x9 aspect ratio, try using "360" here.',
+			'field_type' 	=> 'number',
+			'field_value' => '360',
+			'field_conditional_id' => 'mp_stacks_slider_image_url_open_type',
+			'field_conditional_values' => array( 'lightbox' ),
+			'field_repeater' => 'mp_stacks_slider_images',
+		),
 	);
 	
 	

@@ -250,14 +250,59 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
                     
                     ?><li class="mp-stacks-item">
                     	<?php 
+						
+						//Get Slide link meta
+						$slide_link_url = isset( $slider_image['mp_stacks_slider_image_link_url'] ) ? $slider_image['mp_stacks_slider_image_link_url'] : NULL;
+						$slide_link_open_type = isset( $slider_image['mp_stacks_slider_image_url_open_type'] ) ? $slider_image['mp_stacks_slider_image_url_open_type'] : NULL;
+						$mp_slider_lightbox_width = isset( $slider_image['mp_slider_lightbox_width'] ) ? $slider_image['mp_slider_lightbox_width'] : NULL;
+						$mp_slider_lightbox_width = empty( $mp_slider_lightbox_width ) ? 640 : $mp_slider_lightbox_width;
+						$mp_slider_lightbox_height = isset( $slider_image['mp_slider_lightbox_height'] ) ? $slider_image['mp_slider_lightbox_height'] : NULL;
+						$mp_slider_lightbox_height = empty( $mp_slider_lightbox_height ) ? 360 : $mp_slider_lightbox_height;
+						
+						//Set defaults for open type
+						$target = NULL;
+						$lightbox_class_name = NULL;
+						$lightbox_width = NULL;
+						$lightbox_height = NULL;
+						
+						//If the open type is "in new window"
+						if ( $slide_link_open_type == 'blank' ){
+							$target = ' target="_blank" ';
+						}
+						elseif( $slide_link_open_type == 'parent' ){
+							$target = ' target="_parent" ';
+						}
+						elseif( $slide_link_open_type == 'lightbox' ){
+							$lightbox_class_name = 'mp-stacks-iframe-custom-width-height';
+							$lightbox_width = ' mfp-width="' . $mp_slider_lightbox_width . '" ';
+							$lightbox_height = ' mfp-height="' . $mp_slider_lightbox_height . '" ';
+						}
+						
+						//If there is a slide link URL
+						if ( !empty( $slide_link_url ) ){
+							$slide_a_tag_opening = '<a href="' . $slide_link_url . '" target="' . $slide_link_open_type . '" class="' . $lightbox_class_name . '" ' . $lightbox_width . ' ' . $lightbox_height . '>';
+							$slide_a_tag_closing = '</a>';
+						}
+						//If there is NOT a slide link URL
+						else{
+							$slide_a_tag_opening = NULL;
+							$slide_a_tag_closing = NULL;
+						}	
+						
 						//If there is an image
 						if ( !empty( $slider_image['mp_stacks_slider_image_url'] ) ){ 
-                        	if ( !empty( $mp_stacks_slider_height ) && $mp_stacks_slider_height > 0 ){ ?>
+                        	if ( !empty( $mp_stacks_slider_height ) && $mp_stacks_slider_height > 0 ){ 
+								echo $slide_a_tag_opening; ?>
                     			<img src="<?php echo mp_aq_resize( $slider_image['mp_stacks_slider_image_url'], $mp_stacks_slider_width, $mp_stacks_slider_height, true ); ?>" />
-                            <?php }
-							else{?>
+                            <?php 
+								echo $slide_a_tag_closing;
+							}
+							else{
+								echo $slide_a_tag_opening; ?>
 								<img src="<?php echo mp_aq_resize( $slider_image['mp_stacks_slider_image_url'], $mp_stacks_slider_width, NULL, false ); ?>" />
-							<?php }
+							<?php 
+								echo $slide_a_tag_closing;
+							}
                         }
 						//If there is a video
 						else if ( !empty( $slider_image['mp_stacks_slider_video_url'] ) ){ 
