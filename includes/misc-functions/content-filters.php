@@ -96,14 +96,14 @@ function mp_stacks_brick_content_output_css_slider( $css_output, $post_id, $firs
 		transition: all 0.2s ease-in-out;
 	}
 	#mp-stacks-slider-' . $post_id . ' .flex-active,
-	#mp-stacks-slider-' . $post_id . ' a{
+	#mp-stacks-slider-' . $post_id . ' .flex-control-nav a{
 		color: ' . $mp_stacks_nav_color . ';
 		background-color: ' . $mp_stacks_nav_color . ';
 		background-color: ' . $mp_stacks_nav_color . ';
-		opacity:.5;
+		opacity:.6;
 	}
-	#mp-stacks-slider-' . $post_id . ' .flex-active{
-		opacity:.9;
+	#mp-stacks-slider-' . $post_id . ' .flex-control-nav .flex-active{
+		opacity:1;
 	}
 	#mp-stacks-image-slides-' . $post_id . '{
 		margin-bottom:-13px;	
@@ -169,8 +169,6 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
 	jQuery(document).ready(function($) {
 		
 		//$( window ).load(function(){
-		
-			$("#mp-stacks-slider-container-' . $brick_id . '").css( "display", "inline-block" );
 				
 			mp_stacks_slider_' . $brick_id . ' = $("#mp-stacks-slider-' . $brick_id . '").flexslider({
 			
@@ -213,6 +211,8 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
 			});
 		
 		//});
+		
+		$("#mp-stacks-slider-container-' . $brick_id . '").css( "display", "inline-block" );
 		
 		//Turn slideshow off if the user clicks anywhere on the slider
 		$( document ).on( \'mouseenter click\', \'#mp-stacks-slider-' . $brick_id . ' .mp-slider-video-overlay\', function(){
