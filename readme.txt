@@ -3,8 +3,8 @@ Contributors: johnstonphilip
 Donate link: http://mintplugins.com/
 Tags: message bar, header
 Requires at least: 3.5
-Tested up to: 4.1
-Stable tag: 1.0.0.8
+Tested up to: 4.4
+Stable tag: 1.0.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,9 @@ See full instructions at http://mintplugins.com/doc/mp-stacks
 
 
 == Changelog ==
+
+= 1.0.0.9 = December 30, 2015
+* Make sure that the images in the slider with links don't get the opacity settings that the navigation dots do.
 
 = 1.0.0.8 = November 11, 2015
 * Added the ability for each slide to have its own link complete with Open Types including Lightboxes at custom sizes.
