@@ -101,6 +101,7 @@ function mp_stacks_slider_create_meta_box(){
 			'field_value' => 'true',
 			'field_showhider' => 'mp_stacks_slideshow_settings',
 		),
+		/*
 		'mp_stacks_animation_style' => array(
 			'field_id'			=> 'mp_stacks_animation_style',
 			'field_title' 	=> __( 'Animation Style:', 'mp_stacks_slider'),
@@ -110,6 +111,7 @@ function mp_stacks_slider_create_meta_box(){
 			'field_value' => 'fade',
 			'field_showhider' => 'mp_stacks_slideshow_settings',
 		),
+		*/
 		'mp_stacks_slider_speed' => array(
 			'field_id'			=> 'mp_stacks_slider_speed',
 			'field_title' 	=> __( 'Slide Speed:', 'mp_stacks_slider'),
