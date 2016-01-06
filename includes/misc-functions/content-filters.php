@@ -154,8 +154,9 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
 	$mp_stacks_slider_speed = empty( $mp_stacks_slider_speed ) ? '5000' : $mp_stacks_slider_speed * 1000;
 	
 	//Animation Style
-	$mp_stacks_animation_style = get_post_meta( $brick_id, 'mp_stacks_animation_style', true );
-	$mp_stacks_animation_style = empty( $mp_stacks_animation_style ) ? 'fade' : $mp_stacks_animation_style;
+	//$mp_stacks_animation_style = get_post_meta( $brick_id, 'mp_stacks_animation_style', true );
+	//$mp_stacks_animation_style = empty( $mp_stacks_animation_style ) ? 'fade' : $mp_stacks_animation_style;
+	$mp_stacks_animation_style = 'fade'; //Forced override for this option in version 1.0.2.0 since the "slide" action was malfunctioning for responsive.
 	
 	//Show Navigation Dots?
 	$mp_stacks_show_nav = mp_core_get_post_meta( $brick_id, 'mp_stacks_show_nav', 'true' );
