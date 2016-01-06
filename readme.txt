@@ -4,7 +4,7 @@ Donate link: http://mintplugins.com/
 Tags: message bar, header
 Requires at least: 3.5
 Tested up to: 4.4
-Stable tag: 1.0.0.9
+Stable tag: 1.0.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,10 @@ See full instructions at http://mintplugins.com/doc/mp-stacks
 
 
 == Changelog ==
+
+= 1.0.1.0 = January 6, 2016
+* Update FlexSlider to 2.6.0
+* Temporarily set all sliders to fade mode until responsive slide issue is resolved.
 
 = 1.0.0.9 = December 30, 2015
 * Make sure that the images in the slider with links don't get the opacity settings that the navigation dots do.
