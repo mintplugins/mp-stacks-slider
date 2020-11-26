@@ -158,6 +158,14 @@ function mp_stacks_slider_create_meta_box(){
 			'field_value' => '',
 			'field_repeater' => 'mp_stacks_slider_images'
 		),
+		'mp_stacks_slider_image_alt' => array(
+			'field_id'	 => 'mp_stacks_slider_image_alt',
+			'field_title' => __( 'Alt text', 'mp_stacks'),
+			'field_description' => __( '', 'mp_stacks' ),
+			'field_type' => 'textbox',
+			'field_value' => '',
+			'field_repeater' => 'mp_stacks_slider_images'
+		),
 		'mp_stacks_slider_image_url' => array(
 			'field_id'			=> 'mp_stacks_slider_image_url',
 			'field_title' 	=> __( 'Slide Image', 'mp_stacks_slider'),

@@ -253,6 +253,7 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
                     	<?php 
 						
 						//Get Slide link meta
+						$slide_alt = isset( $slider_image['mp_stacks_slider_image_alt'] ) ? $slider_image['mp_stacks_slider_image_alt'] : 'Slide Image';
 						$slide_link_url = isset( $slider_image['mp_stacks_slider_image_link_url'] ) ? $slider_image['mp_stacks_slider_image_link_url'] : NULL;
 						$slide_link_open_type = isset( $slider_image['mp_stacks_slider_image_url_open_type'] ) ? $slider_image['mp_stacks_slider_image_url_open_type'] : NULL;
 						$mp_slider_lightbox_width = isset( $slider_image['mp_slider_lightbox_width'] ) ? $slider_image['mp_slider_lightbox_width'] : NULL;
@@ -294,13 +295,13 @@ function mp_stacks_brick_content_output_slider($default_content_output, $mp_stac
 						if ( !empty( $slider_image['mp_stacks_slider_image_url'] ) ){ 
                         	if ( !empty( $mp_stacks_slider_height ) && $mp_stacks_slider_height > 0 ){ 
 								echo $slide_a_tag_opening; ?>
-                    			<img src="<?php echo mp_aq_resize( $slider_image['mp_stacks_slider_image_url'], $mp_stacks_slider_width, $mp_stacks_slider_height, true ); ?>" />
+                    			<img alt="<?php echo esc_attr( $slide_alt ); ?>" src="<?php echo mp_aq_resize( $slider_image['mp_stacks_slider_image_url'], $mp_stacks_slider_width, $mp_stacks_slider_height, true ); ?>" />
                             <?php 
 								echo $slide_a_tag_closing;
 							}
 							else{
 								echo $slide_a_tag_opening; ?>
-								<img src="<?php echo mp_aq_resize( $slider_image['mp_stacks_slider_image_url'], $mp_stacks_slider_width, NULL, false ); ?>" />
+								<img alt="<?php echo esc_attr( $slide_alt ); ?>" src="<?php echo mp_aq_resize( $slider_image['mp_stacks_slider_image_url'], $mp_stacks_slider_width, NULL, false ); ?>" />
 							<?php 
 								echo $slide_a_tag_closing;
 							}
